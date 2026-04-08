@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --text: #2c2420;
+  --muted: #6b5e57;
+  --accent: #c1440e;
+  --accent-soft: #fff3ee;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-playfair), serif;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 2px 20px rgba(44, 36, 32, 0.08);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.button-primary:disabled {
+  background: #bcaea6;
+  cursor: not-allowed;
+}
+
+.option-chip {
+  font-family: var(--font-space-mono), monospace;
+  letter-spacing: 0.06em;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0ece7 25%, #e9e1da 50%, #f0ece7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
