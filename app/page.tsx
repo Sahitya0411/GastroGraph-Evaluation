@@ -14,6 +14,7 @@ type Demographics = {
   ageGroup: string;
   gender: string;
   profession: string;
+  professionOther: string;
   ingredientFamiliarity: number;
 };
 
@@ -109,6 +110,7 @@ export default function Home() {
     ageGroup: "",
     gender: "",
     profession: "",
+    professionOther: "",
     ingredientFamiliarity: 0,
   });
 
@@ -183,7 +185,7 @@ export default function Home() {
     demographics.gender.trim().length > 0 &&
     demographics.profession.trim().length > 0 &&
     demographics.ingredientFamiliarity >= 1 &&
-    (demographics.institution !== "Other" || demographics.institutionOther.trim().length > 0);
+    (demographics.profession !== "Other" || demographics.professionOther.trim().length > 0);
 
   const handleStartStudy = async () => {
     const generatedSessionId = crypto.randomUUID();
@@ -199,7 +201,10 @@ export default function Home() {
             : demographics.institution,
         age_group: demographics.ageGroup,
         gender: demographics.gender,
-        profession: demographics.profession,
+        profession:
+          demographics.profession === "Other"
+            ? demographics.professionOther
+            : demographics.profession,
         ingredient_familiarity: demographics.ingredientFamiliarity,
         session_id: generatedSessionId,
       });
@@ -383,36 +388,14 @@ export default function Home() {
               value={demographics.email}
               onChange={(e) => setDemographics((prev) => ({ ...prev, email: e.target.value }))}
             />
-            <select
+            <input
               className="rounded-lg border border-[#E4D7CA] bg-white px-4 py-3"
+              placeholder="Institution / Affiliation"
               value={demographics.institution}
-              onChange={(e) => {
-                const value = e.target.value;
-                setDemographics((prev) => ({
-                  ...prev,
-                  institution: value,
-                  profession: prev.profession || roleByInstitution[value] || prev.profession,
-                }));
-              }}
-            >
-              <option value="">Institution / Affiliation</option>
-              {institutions.map((inst) => (
-                <option key={inst} value={inst}>
-                  {inst}
-                </option>
-              ))}
-            </select>
-
-            {demographics.institution === "Other" && (
-              <input
-                className="rounded-lg border border-[#E4D7CA] bg-white px-4 py-3"
-                placeholder="Specify institution"
-                value={demographics.institutionOther}
-                onChange={(e) =>
-                  setDemographics((prev) => ({ ...prev, institutionOther: e.target.value }))
-                }
-              />
-            )}
+              onChange={(e) =>
+                setDemographics((prev) => ({ ...prev, institution: e.target.value }))
+              }
+            />
 
             <fieldset>
               <legend className="mb-2 text-sm text-[#6B5E57]">Age Group</legend>
@@ -453,7 +436,7 @@ export default function Home() {
             <select
               className="rounded-lg border border-[#E4D7CA] bg-white px-4 py-3"
               value={demographics.profession}
-              onChange={(e) => setDemographics((prev) => ({ ...prev, profession: e.target.value }))}
+              onChange={(e) => setDemographics((prev) => ({ ...prev, profession: e.target.value, professionOther: "" }))}
             >
               <option value="">Profession / Role</option>
               {professions.map((profession) => (
@@ -462,6 +445,17 @@ export default function Home() {
                 </option>
               ))}
             </select>
+
+            {demographics.profession === "Other" && (
+              <input
+                className="rounded-lg border border-[#E4D7CA] bg-white px-4 py-3"
+                placeholder="Please specify your role"
+                value={demographics.professionOther}
+                onChange={(e) =>
+                  setDemographics((prev) => ({ ...prev, professionOther: e.target.value }))
+                }
+              />
+            )}
 
             <fieldset>
               <legend className="mb-2 text-sm text-[#6B5E57]">Familiarity with a wide range of ingredients</legend>
