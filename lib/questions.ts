@@ -341,6 +341,12 @@ const LOCAL_IMAGE_MAP: Record<string, string> = {
   "dry roasted salted peanut": "peanut.jpg",
   "slivered almond": "slivered_almond.jpeg",
   "date": "date.jpeg",
+  // confections & sweets
+  "maringue": "maringue_ai.png",
+  // peppers
+  "red pepper": "red_pepper_ai.png",
+  // citrus
+  "mandarin orange": "mandarin_orange_ai.png",
   // specialty / other
   "jaggery": "jaggery.jpg",
   "marshmallow": "marshmallow.jpeg",
