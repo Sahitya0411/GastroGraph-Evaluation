@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GastroGraph Human Evaluation
 
-## Getting Started
+Blind study: for each of 100 ingredients, a participant sees the dish it is used in and picks the best substitute among
+up to three options (shuffled, source hidden):
 
-First, run the development server:
+| Model | Source |
+|---|---|
+| GastroGraph (functional GNN) | `gastrograph_sub` in `lib/questions.ts` |
+| Embedding baseline | `embedding_sub` in `lib/questions.ts` |
+| Context Reranker | `lib/context_subs.json` (generated) |
+
+When two models suggest the same ingredient it is shown once, and choosing it credits both models.
+Answers are saved to Supabase after every round of 10.
+
+## Regenerating Context Reranker options
+
+Run from the GastroGraph repo root (needs `models/` and `data/`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python3 eval/scripts/build_context_subs.py      # dish context per ingredient: scripts/dish_contexts.json
+python3 eval/scripts/fetch_context_images.py    # images for new substitutes -> public/ctx_*.jpg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The reranker skips candidates that are just a variant of the query (e.g. kiwi -> "kiwi fruit").
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a project at supabase.com.
+2. SQL Editor -> New query -> paste `supabase/schema.sql` -> Run.
+3. Project Settings -> API: copy the Project URL and the `anon` public key into `.env.local`:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+   ```
+4. Results: open `/results` on the site (see below), or Table Editor -> `participants` / `responses`.
 
-## Learn More
+## Results dashboard (`/results`)
 
-To learn more about Next.js, take a look at the following resources:
+Password-protected page that reads every answer with the secret key (server-side only) and shows:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Preference share (3-way)** on answers where all three suggestions differ: shares sum to 100%, chance = 33.3%,
+  95% Wilson CIs and a chi-square test against equal preference.
+- **Head-to-head** for each model pair, with a two-sided sign test.
+- **Pick rate** over all answers (shared suggestions credit both models) and **questions won** per model.
+- Breakdowns **by profession** and **by ingredient familiarity**, and a **per-ingredient** vote table.
+- **Download CSV**: every answer joined with participant details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+It needs two extra server-only variables (never prefix them with `NEXT_PUBLIC_`):
+
+```
+SUPABASE_SECRET_KEY=sb_secret_...
+RESULTS_PASSWORD=choose-a-password
+```
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this folder to its own GitHub repo.
+2. vercel.com -> Add New Project -> import the repo (framework: Next.js, defaults are fine).
+3. Settings -> Environment Variables: add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+   `SUPABASE_SECRET_KEY` and `RESULTS_PASSWORD`, then deploy.
+   (They are baked in at build time, so redeploy after changing them.)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Local development
+
+```bash
+npm install
+npm run dev
+```

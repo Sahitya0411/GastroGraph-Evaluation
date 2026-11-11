@@ -1,10 +1,20 @@
-export type QuestionItem = {
+import CONTEXT_SUBS from "./context_subs.json";
+
+type BaseQuestion = {
   ingredient: string;
   gastrograph_sub: string;
   embedding_sub: string;
 };
 
-export const QUESTION_POOL: QuestionItem[] = [
+export type QuestionItem = BaseQuestion & {
+  /** Context Reranker top pick, computed by scripts/build_context_subs.py */
+  context_sub: string;
+  /** Dish used as the recipe context R for the Context Reranker */
+  recipe: string;
+  recipe_ingredients: string[];
+};
+
+const BASE_POOL: BaseQuestion[] = [
   { ingredient: "chicken", gastrograph_sub: "beef", embedding_sub: "rosemary" },
   { ingredient: "salami", gastrograph_sub: "italian sausage", embedding_sub: "pitted black olive" },
   { ingredient: "turkey", gastrograph_sub: "pheasant", embedding_sub: "savory" },
@@ -107,6 +117,16 @@ export const QUESTION_POOL: QuestionItem[] = [
   { ingredient: "squid", gastrograph_sub: "crab", embedding_sub: "turnip" },
 ];
 
+const contextSubs = CONTEXT_SUBS as Record<
+  string,
+  { recipe: string; recipe_ingredients: string[]; context_sub: string }
+>;
+
+export const QUESTION_POOL: QuestionItem[] = BASE_POOL.map((q) => {
+  const ctx = contextSubs[q.ingredient];
+  if (!ctx) throw new Error(`Missing context substitute for "${q.ingredient}" — rerun scripts/build_context_subs.py`);
+  return { ...q, ...ctx };
+});
 
 export function shuffleArray<T>(input: T[]) {
   const arr = [...input];
@@ -378,10 +398,15 @@ const LOCAL_IMAGE_MAP: Record<string, string> = {
   "caviar": "caviar.jpg",
 };
 
+// Photos for Context Reranker substitutes live in public/ctx_<name>.jpg
+// (scripts/fetch_context_images.py).
+const CONTEXT_IMAGE_KEYS = new Set(Object.values(contextSubs).map((c) => c.context_sub));
+
 export function getFoodImageUrl(ingredient: string): string {
   const key = ingredient.toLowerCase().trim();
   const filename = LOCAL_IMAGE_MAP[key];
   if (filename) return `/${filename}`;
+  if (CONTEXT_IMAGE_KEYS.has(key)) return `/ctx_${key.replace(/ /g, "_")}.jpg`;
   // fallback — neutral food placeholder
   return `https://placehold.co/600x600/F4EEE7/6B5E57?text=${encodeURIComponent(ingredient)}`;
 }

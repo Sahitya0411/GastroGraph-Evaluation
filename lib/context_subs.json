@@ -1,0 +1,1160 @@
+{
+ "chicken": {
+  "recipe": "Chicken Curry",
+  "recipe_ingredients": [
+   "onion",
+   "garlic",
+   "ginger",
+   "tomato",
+   "turmeric",
+   "cumin",
+   "coriander",
+   "chili pepper"
+  ],
+  "context_sub": "lamb"
+ },
+ "salami": {
+  "recipe": "Antipasto Platter",
+  "recipe_ingredients": [
+   "provolone cheese",
+   "olive",
+   "roasted pepper",
+   "artichoke heart",
+   "bread",
+   "olive oil"
+  ],
+  "context_sub": "pastrami"
+ },
+ "turkey": {
+  "recipe": "Roast Turkey with Stuffing",
+  "recipe_ingredients": [
+   "butter",
+   "sage",
+   "thyme",
+   "onion",
+   "celery",
+   "bread",
+   "cranberry"
+  ],
+  "context_sub": "pheasant"
+ },
+ "mutton": {
+  "recipe": "Mutton Rogan Josh",
+  "recipe_ingredients": [
+   "onion",
+   "yogurt",
+   "garlic",
+   "ginger",
+   "cardamom",
+   "clove",
+   "cinnamon",
+   "chili pepper"
+  ],
+  "context_sub": "lamb"
+ },
+ "tuna": {
+  "recipe": "Tuna Salad",
+  "recipe_ingredients": [
+   "mayonnaise",
+   "celery",
+   "red onion",
+   "lemon juice",
+   "black pepper",
+   "lettuce"
+  ],
+  "context_sub": "baby shrimp"
+ },
+ "clam": {
+  "recipe": "Linguine alle Vongole",
+  "recipe_ingredients": [
+   "linguine",
+   "garlic",
+   "white wine",
+   "olive oil",
+   "parsley",
+   "red pepper flake"
+  ],
+  "context_sub": "snail"
+ },
+ "anchovy": {
+  "recipe": "Caesar Salad",
+  "recipe_ingredients": [
+   "romaine lettuce",
+   "parmesan cheese",
+   "garlic",
+   "lemon juice",
+   "egg yolk",
+   "olive oil",
+   "crouton"
+  ],
+  "context_sub": "snail"
+ },
+ "milk": {
+  "recipe": "Pancakes",
+  "recipe_ingredients": [
+   "flour",
+   "egg",
+   "butter",
+   "sugar",
+   "baking powder",
+   "salt"
+  ],
+  "context_sub": "low fat whipping cream"
+ },
+ "butter": {
+  "recipe": "Butter Cookies",
+  "recipe_ingredients": [
+   "flour",
+   "sugar",
+   "egg",
+   "vanilla",
+   "salt"
+  ],
+  "context_sub": "shortening"
+ },
+ "tofu": {
+  "recipe": "Mapo Tofu",
+  "recipe_ingredients": [
+   "ground pork",
+   "doubanjiang",
+   "garlic",
+   "ginger",
+   "scallion",
+   "soy sauce",
+   "sichuan pepper"
+  ],
+  "context_sub": "seitan"
+ },
+ "yogurt": {
+  "recipe": "Tzatziki",
+  "recipe_ingredients": [
+   "cucumber",
+   "garlic",
+   "dill",
+   "lemon juice",
+   "olive oil",
+   "salt"
+  ],
+  "context_sub": "whipped cream cheese"
+ },
+ "basil": {
+  "recipe": "Pesto Pasta",
+  "recipe_ingredients": [
+   "pine nut",
+   "parmesan cheese",
+   "garlic",
+   "olive oil",
+   "pasta"
+  ],
+  "context_sub": "lovage"
+ },
+ "thyme": {
+  "recipe": "Roast Chicken",
+  "recipe_ingredients": [
+   "chicken",
+   "garlic",
+   "lemon",
+   "butter",
+   "rosemary",
+   "black pepper"
+  ],
+  "context_sub": "lovage"
+ },
+ "mint": {
+  "recipe": "Mojito",
+  "recipe_ingredients": [
+   "lime",
+   "sugar",
+   "rum",
+   "soda water",
+   "ice"
+  ],
+  "context_sub": "epazote"
+ },
+ "dill": {
+  "recipe": "Dill Pickles",
+  "recipe_ingredients": [
+   "cucumber",
+   "vinegar",
+   "garlic",
+   "salt",
+   "mustard seed"
+  ],
+  "context_sub": "spearmint"
+ },
+ "sage": {
+  "recipe": "Butternut Squash Ravioli with Brown Butter",
+  "recipe_ingredients": [
+   "butternut squash",
+   "butter",
+   "parmesan cheese",
+   "nutmeg",
+   "pasta"
+  ],
+  "context_sub": "mint jelly"
+ },
+ "marjoram": {
+  "recipe": "Herb Roasted Lamb",
+  "recipe_ingredients": [
+   "lamb",
+   "garlic",
+   "olive oil",
+   "lemon",
+   "black pepper"
+  ],
+  "context_sub": "lovage"
+ },
+ "parsley": {
+  "recipe": "Tabbouleh",
+  "recipe_ingredients": [
+   "bulgur",
+   "tomato",
+   "cucumber",
+   "mint",
+   "lemon juice",
+   "olive oil",
+   "onion"
+  ],
+  "context_sub": "gremolata"
+ },
+ "tarragon": {
+  "recipe": "Bearnaise Sauce",
+  "recipe_ingredients": [
+   "butter",
+   "egg yolk",
+   "shallot",
+   "white wine vinegar",
+   "black pepper"
+  ],
+  "context_sub": "fresh chervil"
+ },
+ "rice": {
+  "recipe": "Vegetable Fried Rice",
+  "recipe_ingredients": [
+   "egg",
+   "soy sauce",
+   "scallion",
+   "carrot",
+   "pea",
+   "garlic",
+   "sesame oil"
+  ],
+  "context_sub": "barley"
+ },
+ "millet": {
+  "recipe": "Millet Porridge",
+  "recipe_ingredients": [
+   "milk",
+   "jaggery",
+   "cardamom",
+   "cashew",
+   "ghee"
+  ],
+  "context_sub": "basmati rice"
+ },
+ "barley": {
+  "recipe": "Beef Barley Soup",
+  "recipe_ingredients": [
+   "beef",
+   "carrot",
+   "celery",
+   "onion",
+   "beef broth",
+   "thyme"
+  ],
+  "context_sub": "red rice"
+ },
+ "crab": {
+  "recipe": "Crab Cakes",
+  "recipe_ingredients": [
+   "mayonnaise",
+   "egg",
+   "breadcrumb",
+   "mustard",
+   "lemon juice",
+   "parsley"
+  ],
+  "context_sub": "haddock"
+ },
+ "jaggery": {
+  "recipe": "Gajar Halwa",
+  "recipe_ingredients": [
+   "carrot",
+   "milk",
+   "ghee",
+   "cardamom",
+   "cashew",
+   "raisin"
+  ],
+  "context_sub": "agave syrup"
+ },
+ "marshmallow": {
+  "recipe": "S'mores",
+  "recipe_ingredients": [
+   "graham cracker",
+   "chocolate"
+  ],
+  "context_sub": "caramel sauce"
+ },
+ "noodle": {
+  "recipe": "Chicken Noodle Soup",
+  "recipe_ingredients": [
+   "chicken",
+   "carrot",
+   "celery",
+   "onion",
+   "chicken broth",
+   "parsley"
+  ],
+  "context_sub": "cooked basmati rice"
+ },
+ "onion": {
+  "recipe": "French Onion Soup",
+  "recipe_ingredients": [
+   "butter",
+   "beef broth",
+   "thyme",
+   "bread",
+   "gruyere cheese",
+   "white wine"
+  ],
+  "context_sub": "shallot"
+ },
+ "paprika": {
+  "recipe": "Chicken Paprikash",
+  "recipe_ingredients": [
+   "chicken",
+   "onion",
+   "sour cream",
+   "butter",
+   "chicken broth",
+   "tomato"
+  ],
+  "context_sub": "green pepper"
+ },
+ "wasabi": {
+  "recipe": "Sushi Rolls",
+  "recipe_ingredients": [
+   "sushi rice",
+   "nori",
+   "rice vinegar",
+   "soy sauce",
+   "cucumber",
+   "salmon"
+  ],
+  "context_sub": "ginger"
+ },
+ "cucumber": {
+  "recipe": "Greek Salad",
+  "recipe_ingredients": [
+   "tomato",
+   "red onion",
+   "feta cheese",
+   "olive",
+   "olive oil",
+   "oregano"
+  ],
+  "context_sub": "avocado"
+ },
+ "pumpkin": {
+  "recipe": "Pumpkin Pie",
+  "recipe_ingredients": [
+   "egg",
+   "sugar",
+   "cinnamon",
+   "nutmeg",
+   "ginger",
+   "evaporated milk",
+   "pie crust"
+  ],
+  "context_sub": "winter squash"
+ },
+ "mango": {
+  "recipe": "Mango Lassi",
+  "recipe_ingredients": [
+   "yogurt",
+   "milk",
+   "sugar",
+   "cardamom"
+  ],
+  "context_sub": "lingonberry"
+ },
+ "pineapple": {
+  "recipe": "Hawaiian Pizza",
+  "recipe_ingredients": [
+   "ham",
+   "mozzarella cheese",
+   "tomato sauce",
+   "pizza dough"
+  ],
+  "context_sub": "peach"
+ },
+ "plum": {
+  "recipe": "Plum Cake",
+  "recipe_ingredients": [
+   "flour",
+   "butter",
+   "sugar",
+   "egg",
+   "cinnamon",
+   "almond"
+  ],
+  "context_sub": "apple"
+ },
+ "honey": {
+  "recipe": "Honey Glazed Carrots",
+  "recipe_ingredients": [
+   "carrot",
+   "butter",
+   "thyme",
+   "salt"
+  ],
+  "context_sub": "brown sugar"
+ },
+ "nutmeg": {
+  "recipe": "Bechamel Sauce",
+  "recipe_ingredients": [
+   "butter",
+   "flour",
+   "milk",
+   "salt",
+   "white pepper"
+  ],
+  "context_sub": "pepper"
+ },
+ "potato": {
+  "recipe": "Aloo Gobi",
+  "recipe_ingredients": [
+   "cauliflower",
+   "onion",
+   "tomato",
+   "turmeric",
+   "cumin",
+   "ginger",
+   "cilantro"
+  ],
+  "context_sub": "jicama"
+ },
+ "lard": {
+  "recipe": "Pie Crust",
+  "recipe_ingredients": [
+   "flour",
+   "salt",
+   "water",
+   "butter"
+  ],
+  "context_sub": "schmaltz"
+ },
+ "lemon": {
+  "recipe": "Lemon Tart",
+  "recipe_ingredients": [
+   "butter",
+   "sugar",
+   "egg",
+   "flour",
+   "cream"
+  ],
+  "context_sub": "citrus peel"
+ },
+ "kale": {
+  "recipe": "Kale Caesar Salad",
+  "recipe_ingredients": [
+   "parmesan cheese",
+   "garlic",
+   "lemon juice",
+   "olive oil",
+   "anchovy",
+   "crouton"
+  ],
+  "context_sub": "rapini"
+ },
+ "mushroom": {
+  "recipe": "Mushroom Risotto",
+  "recipe_ingredients": [
+   "arborio rice",
+   "onion",
+   "garlic",
+   "white wine",
+   "parmesan cheese",
+   "butter",
+   "chicken broth"
+  ],
+  "context_sub": "white truffle"
+ },
+ "pea": {
+  "recipe": "Matar Paneer",
+  "recipe_ingredients": [
+   "paneer",
+   "onion",
+   "tomato",
+   "ginger",
+   "garlic",
+   "garam masala",
+   "cream"
+  ],
+  "context_sub": "mung bean"
+ },
+ "oat": {
+  "recipe": "Oatmeal Cookies",
+  "recipe_ingredients": [
+   "butter",
+   "brown sugar",
+   "flour",
+   "egg",
+   "raisin",
+   "cinnamon"
+  ],
+  "context_sub": "sorghum"
+ },
+ "scallion": {
+  "recipe": "Scallion Pancakes",
+  "recipe_ingredients": [
+   "flour",
+   "sesame oil",
+   "salt",
+   "water",
+   "soy sauce"
+  ],
+  "context_sub": "chinese chive"
+ },
+ "spaghetti": {
+  "recipe": "Spaghetti Carbonara",
+  "recipe_ingredients": [
+   "egg",
+   "pancetta",
+   "parmesan cheese",
+   "black pepper",
+   "garlic"
+  ],
+  "context_sub": "rigatoni pasta"
+ },
+ "cauliflower": {
+  "recipe": "Cauliflower Cheese",
+  "recipe_ingredients": [
+   "cheddar cheese",
+   "milk",
+   "butter",
+   "flour",
+   "mustard"
+  ],
+  "context_sub": "broccoli spear"
+ },
+ "lettuce": {
+  "recipe": "BLT Sandwich",
+  "recipe_ingredients": [
+   "bacon",
+   "tomato",
+   "bread",
+   "mayonnaise"
+  ],
+  "context_sub": "purslane"
+ },
+ "turnip": {
+  "recipe": "Roasted Root Vegetables",
+  "recipe_ingredients": [
+   "carrot",
+   "parsnip",
+   "potato",
+   "olive oil",
+   "thyme",
+   "rosemary"
+  ],
+  "context_sub": "small potato"
+ },
+ "cashew": {
+  "recipe": "Cashew Chicken Stir-Fry",
+  "recipe_ingredients": [
+   "chicken",
+   "soy sauce",
+   "garlic",
+   "ginger",
+   "bell pepper",
+   "scallion"
+  ],
+  "context_sub": "sliced water chestnut"
+ },
+ "leek": {
+  "recipe": "Potato Leek Soup",
+  "recipe_ingredients": [
+   "potato",
+   "butter",
+   "chicken broth",
+   "cream",
+   "thyme"
+  ],
+  "context_sub": "onion"
+ },
+ "celery": {
+  "recipe": "Mirepoix Chicken Stock",
+  "recipe_ingredients": [
+   "carrot",
+   "onion",
+   "chicken",
+   "bay leaf",
+   "black pepper"
+  ],
+  "context_sub": "jerusalem artichoke"
+ },
+ "kefir": {
+  "recipe": "Overnight Oats",
+  "recipe_ingredients": [
+   "oat",
+   "honey",
+   "blueberry",
+   "chia seed",
+   "banana"
+  ],
+  "context_sub": "almond milk"
+ },
+ "fig": {
+  "recipe": "Fig and Goat Cheese Salad",
+  "recipe_ingredients": [
+   "arugula",
+   "goat cheese",
+   "walnut",
+   "honey",
+   "balsamic vinegar"
+  ],
+  "context_sub": "persimmon"
+ },
+ "grape": {
+  "recipe": "Waldorf Salad",
+  "recipe_ingredients": [
+   "apple",
+   "celery",
+   "walnut",
+   "mayonnaise",
+   "lettuce"
+  ],
+  "context_sub": "cranberry"
+ },
+ "edamame": {
+  "recipe": "Poke Bowl",
+  "recipe_ingredients": [
+   "tuna",
+   "sushi rice",
+   "soy sauce",
+   "sesame oil",
+   "avocado",
+   "scallion"
+  ],
+  "context_sub": "bean sprout"
+ },
+ "arugula": {
+  "recipe": "Arugula Prosciutto Pizza",
+  "recipe_ingredients": [
+   "prosciutto",
+   "mozzarella cheese",
+   "parmesan cheese",
+   "olive oil",
+   "pizza dough"
+  ],
+  "context_sub": "chard leaf"
+ },
+ "jalapeno": {
+  "recipe": "Pico de Gallo",
+  "recipe_ingredients": [
+   "tomato",
+   "red onion",
+   "cilantro",
+   "lime juice",
+   "salt"
+  ],
+  "context_sub": "yellow capsicum"
+ },
+ "quail": {
+  "recipe": "Roasted Quail",
+  "recipe_ingredients": [
+   "butter",
+   "thyme",
+   "garlic",
+   "grape",
+   "shallot"
+  ],
+  "context_sub": "duck fat"
+ },
+ "cranberry": {
+  "recipe": "Cranberry Sauce",
+  "recipe_ingredients": [
+   "sugar",
+   "orange",
+   "water",
+   "cinnamon"
+  ],
+  "context_sub": "quince"
+ },
+ "pistachio": {
+  "recipe": "Baklava",
+  "recipe_ingredients": [
+   "phyllo dough",
+   "butter",
+   "honey",
+   "sugar",
+   "cinnamon",
+   "walnut"
+  ],
+  "context_sub": "brazil nut"
+ },
+ "pomegranate": {
+  "recipe": "Fattoush Salad",
+  "recipe_ingredients": [
+   "lettuce",
+   "cucumber",
+   "tomato",
+   "pita",
+   "sumac",
+   "mint",
+   "olive oil"
+  ],
+  "context_sub": "black raspberry"
+ },
+ "lamb": {
+  "recipe": "Lamb Kofta",
+  "recipe_ingredients": [
+   "onion",
+   "garlic",
+   "cumin",
+   "coriander",
+   "parsley",
+   "mint"
+  ],
+  "context_sub": "pork fat"
+ },
+ "pork": {
+  "recipe": "Pulled Pork",
+  "recipe_ingredients": [
+   "barbecue sauce",
+   "brown sugar",
+   "paprika",
+   "garlic",
+   "onion",
+   "apple cider vinegar"
+  ],
+  "context_sub": "beef bone"
+ },
+ "salmon": {
+  "recipe": "Teriyaki Salmon",
+  "recipe_ingredients": [
+   "soy sauce",
+   "mirin",
+   "ginger",
+   "garlic",
+   "honey",
+   "sesame seed"
+  ],
+  "context_sub": "cod fish fillet"
+ },
+ "shrimp": {
+  "recipe": "Shrimp Scampi",
+  "recipe_ingredients": [
+   "garlic",
+   "butter",
+   "white wine",
+   "lemon juice",
+   "parsley",
+   "linguine"
+  ],
+  "context_sub": "littleneck clam"
+ },
+ "feta": {
+  "recipe": "Spanakopita",
+  "recipe_ingredients": [
+   "spinach",
+   "phyllo dough",
+   "onion",
+   "egg",
+   "dill",
+   "olive oil"
+  ],
+  "context_sub": "fresh goat cheese"
+ },
+ "rosemary": {
+  "recipe": "Rosemary Focaccia",
+  "recipe_ingredients": [
+   "flour",
+   "olive oil",
+   "yeast",
+   "sea salt",
+   "garlic"
+  ],
+  "context_sub": "lovage"
+ },
+ "oregano": {
+  "recipe": "Marinara Sauce",
+  "recipe_ingredients": [
+   "tomato",
+   "garlic",
+   "olive oil",
+   "onion",
+   "basil"
+  ],
+  "context_sub": "parsley root"
+ },
+ "cardamom": {
+  "recipe": "Masala Chai",
+  "recipe_ingredients": [
+   "black tea",
+   "milk",
+   "ginger",
+   "cinnamon",
+   "clove",
+   "sugar"
+  ],
+  "context_sub": "star anise"
+ },
+ "allspice": {
+  "recipe": "Jamaican Jerk Chicken",
+  "recipe_ingredients": [
+   "chicken",
+   "scotch bonnet pepper",
+   "thyme",
+   "scallion",
+   "garlic",
+   "lime juice"
+  ],
+  "context_sub": "saffron"
+ },
+ "quinoa": {
+  "recipe": "Quinoa Salad",
+  "recipe_ingredients": [
+   "cucumber",
+   "tomato",
+   "red onion",
+   "lemon juice",
+   "olive oil",
+   "parsley",
+   "feta cheese"
+  ],
+  "context_sub": "whole wheat couscous"
+ },
+ "bulgur": {
+  "recipe": "Kibbeh",
+  "recipe_ingredients": [
+   "lamb",
+   "onion",
+   "pine nut",
+   "cinnamon",
+   "allspice"
+  ],
+  "context_sub": "couscous"
+ },
+ "bread": {
+  "recipe": "Bruschetta",
+  "recipe_ingredients": [
+   "tomato",
+   "garlic",
+   "basil",
+   "olive oil",
+   "balsamic vinegar"
+  ],
+  "context_sub": "ciabatta"
+ },
+ "artichoke": {
+  "recipe": "Spinach Artichoke Dip",
+  "recipe_ingredients": [
+   "spinach",
+   "cream cheese",
+   "parmesan cheese",
+   "garlic",
+   "sour cream"
+  ],
+  "context_sub": "sorrel"
+ },
+ "spinach": {
+  "recipe": "Palak Paneer",
+  "recipe_ingredients": [
+   "paneer",
+   "onion",
+   "garlic",
+   "ginger",
+   "cream",
+   "garam masala"
+  ],
+  "context_sub": "rapini"
+ },
+ "carrot": {
+  "recipe": "Carrot Cake",
+  "recipe_ingredients": [
+   "flour",
+   "sugar",
+   "egg",
+   "cinnamon",
+   "walnut",
+   "cream cheese"
+  ],
+  "context_sub": "golden beet"
+ },
+ "broccoli": {
+  "recipe": "Broccoli Cheddar Soup",
+  "recipe_ingredients": [
+   "cheddar cheese",
+   "onion",
+   "butter",
+   "milk",
+   "chicken broth"
+  ],
+  "context_sub": "head of cabbage"
+ },
+ "garlic": {
+  "recipe": "Garlic Bread",
+  "recipe_ingredients": [
+   "bread",
+   "butter",
+   "parsley",
+   "parmesan cheese"
+  ],
+  "context_sub": "chive"
+ },
+ "cherry": {
+  "recipe": "Black Forest Cake",
+  "recipe_ingredients": [
+   "chocolate",
+   "cream",
+   "sugar",
+   "flour",
+   "egg",
+   "kirsch"
+  ],
+  "context_sub": "lingonberry"
+ },
+ "apricot": {
+  "recipe": "Apricot Tart",
+  "recipe_ingredients": [
+   "butter",
+   "sugar",
+   "flour",
+   "almond",
+   "egg"
+  ],
+  "context_sub": "lingonberry"
+ },
+ "blackberry": {
+  "recipe": "Blackberry Cobbler",
+  "recipe_ingredients": [
+   "sugar",
+   "butter",
+   "flour",
+   "lemon juice",
+   "cinnamon"
+  ],
+  "context_sub": "persimmon"
+ },
+ "orange": {
+  "recipe": "Orange Glazed Duck",
+  "recipe_ingredients": [
+   "duck",
+   "sugar",
+   "butter",
+   "orange liqueur",
+   "chicken broth"
+  ],
+  "context_sub": "lingonberry"
+ },
+ "almond": {
+  "recipe": "Almond Biscotti",
+  "recipe_ingredients": [
+   "flour",
+   "sugar",
+   "egg",
+   "vanilla",
+   "baking powder"
+  ],
+  "context_sub": "pecan"
+ },
+ "chickpea": {
+  "recipe": "Chana Masala",
+  "recipe_ingredients": [
+   "onion",
+   "tomato",
+   "garlic",
+   "ginger",
+   "cumin",
+   "garam masala",
+   "cilantro"
+  ],
+  "context_sub": "mung bean"
+ },
+ "sardine": {
+  "recipe": "Grilled Sardines",
+  "recipe_ingredients": [
+   "olive oil",
+   "lemon",
+   "garlic",
+   "parsley",
+   "sea salt"
+  ],
+  "context_sub": "octopus"
+ },
+ "okra": {
+  "recipe": "Bhindi Masala",
+  "recipe_ingredients": [
+   "onion",
+   "tomato",
+   "cumin",
+   "turmeric",
+   "coriander",
+   "chili pepper"
+  ],
+  "context_sub": "capsicum"
+ },
+ "radish": {
+  "recipe": "Radish Slaw",
+  "recipe_ingredients": [
+   "cabbage",
+   "carrot",
+   "rice vinegar",
+   "scallion",
+   "sesame oil"
+  ],
+  "context_sub": "rutabaga"
+ },
+ "blueberry": {
+  "recipe": "Blueberry Muffins",
+  "recipe_ingredients": [
+   "flour",
+   "sugar",
+   "butter",
+   "egg",
+   "milk",
+   "baking powder"
+  ],
+  "context_sub": "lingonberry"
+ },
+ "chestnut": {
+  "recipe": "Chestnut Stuffing",
+  "recipe_ingredients": [
+   "bread",
+   "butter",
+   "onion",
+   "celery",
+   "sage",
+   "chicken broth"
+  ],
+  "context_sub": "pecan"
+ },
+ "peanut": {
+  "recipe": "Pad Thai",
+  "recipe_ingredients": [
+   "rice noodle",
+   "shrimp",
+   "egg",
+   "fish sauce",
+   "tamarind",
+   "bean sprout",
+   "lime"
+  ],
+  "context_sub": "water chestnut"
+ },
+ "hazelnut": {
+  "recipe": "Hazelnut Chocolate Spread",
+  "recipe_ingredients": [
+   "cocoa",
+   "sugar",
+   "milk",
+   "vanilla"
+  ],
+  "context_sub": "pecan"
+ },
+ "pecan": {
+  "recipe": "Pecan Pie",
+  "recipe_ingredients": [
+   "corn syrup",
+   "brown sugar",
+   "butter",
+   "egg",
+   "vanilla",
+   "pie crust"
+  ],
+  "context_sub": "black walnut"
+ },
+ "walnut": {
+  "recipe": "Walnut Brownies",
+  "recipe_ingredients": [
+   "chocolate",
+   "butter",
+   "sugar",
+   "egg",
+   "flour"
+  ],
+  "context_sub": "pecan"
+ },
+ "lentil": {
+  "recipe": "Dal Tadka",
+  "recipe_ingredients": [
+   "onion",
+   "tomato",
+   "garlic",
+   "cumin",
+   "turmeric",
+   "ghee",
+   "chili pepper"
+  ],
+  "context_sub": "mung bean"
+ },
+ "miso": {
+  "recipe": "Miso Soup",
+  "recipe_ingredients": [
+   "tofu",
+   "seaweed",
+   "scallion",
+   "dashi stock"
+  ],
+  "context_sub": "tamari soy sauce"
+ },
+ "kiwi": {
+  "recipe": "Pavlova",
+  "recipe_ingredients": [
+   "egg white",
+   "sugar",
+   "cream",
+   "strawberry",
+   "vanilla"
+  ],
+  "context_sub": "orange flower water"
+ },
+ "venison": {
+  "recipe": "Venison Stew",
+  "recipe_ingredients": [
+   "red wine",
+   "carrot",
+   "onion",
+   "juniper berry",
+   "thyme",
+   "potato"
+  ],
+  "context_sub": "lean stewing beef"
+ },
+ "chayote": {
+  "recipe": "Chayote Stir-Fry",
+  "recipe_ingredients": [
+   "garlic",
+   "onion",
+   "soy sauce",
+   "carrot",
+   "pork"
+  ],
+  "context_sub": "green zucchini"
+ },
+ "anise": {
+  "recipe": "Anise Biscotti",
+  "recipe_ingredients": [
+   "flour",
+   "sugar",
+   "egg",
+   "butter",
+   "almond"
+  ],
+  "context_sub": "carom seed"
+ },
+ "squid": {
+  "recipe": "Fried Calamari",
+  "recipe_ingredients": [
+   "flour",
+   "lemon",
+   "garlic",
+   "olive oil",
+   "marinara sauce"
+  ],
+  "context_sub": "swordfish"
+ }
+}

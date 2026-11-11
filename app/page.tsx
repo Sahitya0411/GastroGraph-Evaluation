@@ -18,20 +18,54 @@ type Demographics = {
   ingredientFamiliarity: number;
 };
 
+type OptionLabel = "A" | "B" | "C";
+type Model = "gastrograph" | "embedding" | "context";
+
+type DisplayOption = {
+  label: OptionLabel;
+  ingredient: string;
+  /** Models that proposed this ingredient (two models can agree on the same one). */
+  models: Model[];
+};
+
 type PendingResponse = {
   round_number: number;
   question_number: number;
   ingredient: string;
+  recipe: string;
   option_a: string;
   option_b: string;
-  gastrograph_option: "A" | "B";
-  selected_option: "A" | "B";
+  option_c: string | null;
+  gastrograph_option: OptionLabel;
+  embedding_option: OptionLabel;
+  context_option: OptionLabel;
+  selected_option: OptionLabel;
   selected_ingredient: string;
   is_gastrograph_selected: boolean;
+  is_embedding_selected: boolean;
+  is_context_selected: boolean;
   response_time_ms: number;
 };
 
 const STORAGE_KEY = "gastrograph-study-state";
+
+/** Deterministic shuffle so a question keeps the same A/B/C order on Back and on reload. */
+function seededShuffle<T>(input: T[], seedText: string): T[] {
+  let seed = 2166136261;
+  for (let i = 0; i < seedText.length; i += 1) seed = Math.imul(seed ^ seedText.charCodeAt(i), 16777619);
+  const rand = () => {
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const arr = [...input];
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rand() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 const institutions = [
   "Le Cordon Bleu Gurgaon",
@@ -65,7 +99,7 @@ function OptionCard({
   selected,
   onSelect,
 }: {
-  label: "A" | "B";
+  label: OptionLabel;
   ingredient: string;
   selected: boolean;
   onSelect: () => void;
@@ -118,7 +152,7 @@ export default function Home() {
   const [roundNumber, setRoundNumber] = useState(1);
   const [questionOrder, setQuestionOrder] = useState<number[]>([]);
   const [questionIndexInRound, setQuestionIndexInRound] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<"A" | "B" | null>(null);
+  const [selectedOption, setSelectedOption] = useState<OptionLabel | null>(null);
   const [selectionReady, setSelectionReady] = useState(false);
   const [pendingResponses, setPendingResponses] = useState<PendingResponse[]>([]);
   const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
@@ -165,17 +199,35 @@ export default function Home() {
 
   const shuffledOptions = useMemo(() => {
     if (!currentQuestion) return null;
-    const picks = shuffleArray([
-      { option: "A" as const, value: currentQuestion.gastrograph_sub, source: "g" as const },
-      { option: "B" as const, value: currentQuestion.embedding_sub, source: "e" as const },
-    ]);
+    const proposals: [Model, string][] = [
+      ["gastrograph", currentQuestion.gastrograph_sub],
+      ["embedding", currentQuestion.embedding_sub],
+      ["context", currentQuestion.context_sub],
+    ];
+    // Merge identical suggestions into one card so the same ingredient is never shown twice.
+    const merged = new Map<string, Model[]>();
+    for (const [model, value] of proposals) {
+      const key = value.toLowerCase().trim();
+      merged.set(key, [...(merged.get(key) ?? []), model]);
+    }
+    const labels: OptionLabel[] = ["A", "B", "C"];
+    const options: DisplayOption[] = seededShuffle([...merged.entries()], `${sessionId}:${currentQuestion.ingredient}`).map(([ingredient, models], i) => ({
+      label: labels[i],
+      ingredient,
+      models,
+    }));
+    const optionFor = (model: Model) => options.find((o) => o.models.includes(model))!.label;
 
-    const optionA = picks[0].value;
-    const optionB = picks[1].value;
-    const gastrographOption: "A" | "B" = picks[0].source === "g" ? "A" : "B";
-
-    return { ingredient: currentQuestion.ingredient, optionA, optionB, gastrographOption };
-  }, [currentQuestion]);
+    return {
+      ingredient: currentQuestion.ingredient,
+      recipe: currentQuestion.recipe,
+      recipeIngredients: currentQuestion.recipe_ingredients,
+      options,
+      gastrographOption: optionFor("gastrograph"),
+      embeddingOption: optionFor("embedding"),
+      contextOption: optionFor("context"),
+    };
+  }, [currentQuestion, sessionId]);
 
   const allConsentChecked = consent.every(Boolean);
   const demographicsValid =
@@ -223,7 +275,7 @@ export default function Home() {
     setScreen("quiz");
   };
 
-  const handleSelectOption = (option: "A" | "B") => {
+  const handleSelectOption = (option: OptionLabel) => {
     setSelectedOption(option);
     setSelectionReady(false);
     setTimeout(() => setSelectionReady(true), 250);
@@ -232,18 +284,26 @@ export default function Home() {
   const handleNextQuestion = () => {
     if (!shuffledOptions || !selectedOption) return;
 
-    const selectedIngredient = selectedOption === "A" ? shuffledOptions.optionA : shuffledOptions.optionB;
+    const opts = shuffledOptions.options;
+    const selected = opts.find((o) => o.label === selectedOption);
+    if (!selected) return;
 
     const response: PendingResponse = {
       round_number: roundNumber,
       question_number: questionIndexInRound + 1,
       ingredient: shuffledOptions.ingredient,
-      option_a: shuffledOptions.optionA,
-      option_b: shuffledOptions.optionB,
+      recipe: shuffledOptions.recipe,
+      option_a: opts[0].ingredient,
+      option_b: opts[1].ingredient,
+      option_c: opts[2]?.ingredient ?? null,
       gastrograph_option: shuffledOptions.gastrographOption,
+      embedding_option: shuffledOptions.embeddingOption,
+      context_option: shuffledOptions.contextOption,
       selected_option: selectedOption,
-      selected_ingredient: selectedIngredient,
-      is_gastrograph_selected: selectedOption === shuffledOptions.gastrographOption,
+      selected_ingredient: selected.ingredient,
+      is_gastrograph_selected: selected.models.includes("gastrograph"),
+      is_embedding_selected: selected.models.includes("embedding"),
+      is_context_selected: selected.models.includes("context"),
       response_time_ms: Date.now() - questionStartTime,
     };
 
@@ -320,7 +380,7 @@ export default function Home() {
         <section className="card mt-8 p-8">
           <h1 className="text-3xl text-[#2C2420]">GastroGraph: Culinary Expert Evaluation Study</h1>
           <p className="mt-3 text-sm text-[#6B5E57]">Conducted by: GastroGraph Research Team · IIIT Delhi (2026-27)</p>
-          <p className="mt-4 text-[#6B5E57]">We are conducting a research study on ingredient substitution in cooking. You will be presented with pairs of possible substitutes for common ingredients and asked to judge which is the more appropriate culinary replacement, drawing solely on your expertise.</p>
+          <p className="mt-4 text-[#6B5E57]">We are conducting a research study on ingredient substitution in cooking. You will be presented with a few possible substitutes for common ingredients and asked to judge which is the more appropriate culinary replacement, drawing solely on your expertise.</p>
 
           <div className="mt-8 space-y-3">
             {[
@@ -345,7 +405,7 @@ export default function Home() {
           <div className="mt-8 rounded-xl border border-[#EEE3D8] bg-[#FFFCF9] p-5 text-[#6B5E57]">
             <h2 className="text-xl text-[#2C2420]">How it works</h2>
             <p className="mt-3">
-              You will be shown one ingredient at a time. For each ingredient, two possible substitutes (Option A and Option B) are displayed - each with a photograph and name. Based on your culinary knowledge, select the substitute you consider more appropriate.
+              You will be shown one ingredient at a time. For each ingredient you will also see the dish it is being used in, and up to three possible substitutes (Options A, B and C) - each with a photograph and name. Based on your culinary knowledge, select the substitute you consider most appropriate for that dish.
             </p>
             <p className="mt-3">
               There are no right or wrong answers - we are interested in your expert judgement. After every 10 ingredients your responses are saved automatically. You may then continue with the next set or stop and submit at any point.
@@ -560,23 +620,29 @@ export default function Home() {
           <p className="mt-3 text-center option-chip text-base">{shuffledOptions.ingredient.toUpperCase()}</p>
         </div>
 
+        <div className="mx-auto mt-5 max-w-[560px] rounded-xl border border-[#EEE3D8] bg-[#FFFCF9] px-4 py-3 text-center">
+          <p className="text-sm text-[#6B5E57]">Used in</p>
+          <p className="mt-1 text-lg text-[#2C2420]">{shuffledOptions.recipe}</p>
+          <p className="mt-1 text-xs text-[#6B5E57]">
+            with {shuffledOptions.recipeIngredients.join(", ")}
+          </p>
+        </div>
 
 
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <OptionCard
-            key={`A-${shuffledOptions.optionA}-${questionIndexInRound}`}
-            label="A"
-            ingredient={shuffledOptions.optionA}
-            selected={selectedOption === "A"}
-            onSelect={() => handleSelectOption("A")}
-          />
-          <OptionCard
-            key={`B-${shuffledOptions.optionB}-${questionIndexInRound}`}
-            label="B"
-            ingredient={shuffledOptions.optionB}
-            selected={selectedOption === "B"}
-            onSelect={() => handleSelectOption("B")}
-          />
+        <div
+          className={`mt-8 grid grid-cols-1 gap-4 ${
+            shuffledOptions.options.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
+          }`}
+        >
+          {shuffledOptions.options.map((opt) => (
+            <OptionCard
+              key={`${opt.label}-${opt.ingredient}-${questionIndexInRound}`}
+              label={opt.label}
+              ingredient={opt.ingredient}
+              selected={selectedOption === opt.label}
+              onSelect={() => handleSelectOption(opt.label)}
+            />
+          ))}
         </div>
 
         <div className="mt-8 flex items-center justify-between gap-3">
